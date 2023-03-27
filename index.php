@@ -2,9 +2,15 @@
 
 <main>
 
-  <h1>Home Page</h1>
-
-  <p>This content is hard-coded into the `index.php` file in the root of the theme directory.</p>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <h4 class="text-center">testtt</h4>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 

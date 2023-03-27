@@ -14,7 +14,7 @@ const {
 
 module.exports = [{
   entry: {
-    libs: ['./src/js/libs.js'],
+    // libs: ['./src/js/libs.js'],
     app: ['./src/js/main.js']
   },
   output: {
@@ -57,10 +57,10 @@ module.exports = [{
       },
       // loader for images and icons (only required if css references image files)
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(webp|svg|png|jpg)$/,
         type: 'asset/resource',
         generator: {
-          filename: '../assets/img/[name][ext]',
+          filename: '../img/[name][ext]',
         }
       },
     ]

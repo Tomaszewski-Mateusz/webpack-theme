@@ -1,0 +1,60 @@
+.hero {
+  min-height: calc(100vh - $navHeight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  &__wrapper {
+    position: relative;
+    img {
+      object-fit: contain;
+      aspect-ratio: 3/2;
+    }
+    &::before {
+      @include pseudo();
+      inset: 20% -100% -8px 5%;
+      background: $themeSecondary;
+      border-radius: $lgBorder 0 0 $lgBorder;
+      border: $borderWidth solid white;
+      box-shadow: $shadow;
+      z-index: -1;
+    }
+    &::after {
+      @include pseudo();
+      left: 70%;
+      top: 60%;
+      transform: translateY(-50%);
+      aspect-ratio: 3/2;
+      width: 75%;
+      background: url(/assets/img/effect-writing.png);
+      @include bg(no-repeat, contain);
+      z-index: -1;
+    }
+    & > span {
+      $boxWidth: 200px;
+      &::before,&::after {
+        @include pseudo();
+        aspect-ratio: 1/1;
+        border-radius: $smBorder;
+        border: $borderWidth solid white;
+        z-index: -2;
+      }
+      &::before {
+        left: 0;
+        top: 10%;
+        width: $boxWidth;
+        background: $themePrimary;
+        box-shadow: $shadow;
+
+      }
+      &::after {
+        right: 10%;
+        width: ($boxWidth * 1.85);
+        bottom: -10%;
+        background: $themeSecondary;
+        box-shadow: $shadow;
+
+      }
+    }
+  }
+}

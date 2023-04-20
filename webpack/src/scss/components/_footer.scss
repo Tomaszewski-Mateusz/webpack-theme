@@ -1,0 +1,26 @@
+footer:not(.samatix-footer) {
+
+}
+
+.samatix-footer {
+    background-color: #fafcfc;
+    min-height: 40px;
+    box-shadow: 0 0 64px 16px rgba(160, 214, 213, 0.15);
+
+    .container {
+        &.custom {
+            font-weight: 500;
+
+            p {
+                margin-bottom: 0;
+                line-height: 2;
+
+                a.samatix-brand {
+                    font-weight: 700;
+                    color: #f6511d;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

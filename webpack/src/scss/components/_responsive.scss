@@ -1,0 +1,22 @@
+$setMargin: 540px;
+$halfMargin: 270px;
+$uhdWidth: 3552px;
+$uhdSingleWidth: 3264px;
+
+main {
+    margin-top: $navHeight;
+    @include max(tablet) {
+        min-height: 100vh;
+        min-height: 100svh;
+    }
+}
+
+.container {
+    &.custom {
+        width: 100%;
+        max-width: clamp(300px, 100%, 992px);
+        @include min (desktop) {
+            max-width: clamp(992px, 80%, $uhdSingleWidth * 2);
+        }
+    }
+}

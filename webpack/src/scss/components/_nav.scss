@@ -1,0 +1,58 @@
+@include max(desktop) {
+  .navbar.navbar-expand-xxl {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
+
+.nav-logo {
+  width: clamp(6rem, 10.41vw, 25rem);
+  aspect-ratio: 3/1;
+  height: auto;
+  transition: 0.2s ease-in-out;
+  object-fit: contain;
+}
+
+.sticky {
+  background-color: white;
+  transition: 0.3s ease-in-out;
+  top: 0;
+  z-index: 1020;
+  width: 100%;
+  position: sticky;
+
+  @include min(desktop) {
+    position: sticky;
+  }
+
+  &-shadow {
+    box-shadow: $shadow;
+  }
+}
+
+.main-header {
+  .navbar {
+    background: white;
+    border-bottom: 1px solid #e7e7e7;
+    min-height: $navHeight;
+  }
+  .nav-item {
+    &:last-child {
+      .nav-link {
+        @extend .button;
+        @extend .button--primary;
+        margin-left: 2rem;
+      }
+    }
+    &:not(:last-child) .nav-link {
+      padding-inline: 2rem;
+      font-weight: 500;
+      color: $textPrimary;
+      transition: .2s ease-in-out;
+      &:hover {
+        color: lighten($textPrimary, 25%);
+      }
+    }
+  }
+}

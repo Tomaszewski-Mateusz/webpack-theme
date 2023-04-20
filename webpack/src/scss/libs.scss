@@ -1,3 +1,4 @@
-body {
-    color: red;
-}
+@import './components/var';
+@import 'bootstrap/scss/bootstrap';
+
+@import 'aos/src/sass/aos';

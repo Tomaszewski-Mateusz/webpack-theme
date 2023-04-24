@@ -1,134 +1,143 @@
 .text-center {
-    &>h1,
-    &>h2,
-    &>h3,
-    &>h4,
-    &>h5,
-    &>h6,
-    &>p,
-    ul li {
-        text-align: center;
-    }
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6,
+  & > p,
+  ul li {
+    text-align: center;
+  }
 }
 .text-end {
-    &>h1,
-    &>h2,
-    &>h3,
-    &>h4,
-    &>h5,
-    &>h6,
-    &>p,
-    ul li {
-        text-align: end;
-    }
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6,
+  & > p,
+  ul li {
+    text-align: end;
+  }
 }
 .img-wrapper {
-    img {
-        max-width: 100%;
-        height: auto;
-    }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 .aspect {
+  &-3by2 {
+    object-fit: cover;
+    aspect-ratio: 3/2;
+    @include max(desktop) {
+      border-radius: 0 !important;
+    }
+    &-small {
+      @include max(desktop) {
+        aspect-ratio: 5/2;
+      }
+    }
+  }
+  &-blog {
+    @include max(desktop) {
+      aspect-ratio: 3/2;
+    }
+  }
 
-    &-3by2 {
-        object-fit: cover;
-        aspect-ratio: 1/1;
-        @include min(desktop) {
-            aspect-ratio: 9/7;
-        }
-        @include min (fhd) {
-            aspect-ratio: 3/2;
-        }
-        &-small {
-            @include max(desktop) {
-                aspect-ratio: 5/2;
-            }
-        }
-    }
-    &-blog {
-        @include max(desktop) {
-            aspect-ratio: 3/2;
-        }
-    }
-    
+  &-16by9 {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
 
-    &-16by9 {
-        aspect-ratio: 16/9;
-        object-fit: cover;
-    }
+  &-1by1 {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
 
-    &-1by1 {
-        aspect-ratio: 1/1;
-        object-fit: cover;
+  &-2by3 {
+    aspect-ratio: 2/3;
+    object-fit: cover;
+  }
+  &-2by1 {
+    aspect-ratio: 2/1;
+    object-fit: cover;
+  }
+  &-5by2 {
+    object-fit: cover;
+    aspect-ratio: 5/3;
+    @include min(fhd) {
+      aspect-ratio: 5/2;
     }
-
-    &-2by3 {
-        aspect-ratio: 2/3;
-        object-fit: cover;
+  }
+  &-6by5 {
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    @include min(desktop) {
+      width: 90%;
+      aspect-ratio: 6/5;
     }
-    &-2by1 {
-        aspect-ratio: 2/1;
-        object-fit: cover;
-    }
-    &-5by2 {
-        object-fit: cover;
-        aspect-ratio: 5/3;
-        @include min(fhd) {
-            aspect-ratio: 5/2;
-        }
-    }
-    &-6by5 {
-        object-fit: cover;
-        aspect-ratio: 1/1;
-        @include min(desktop) {
-            width: 90%;
-            aspect-ratio: 6/5;
-        }
-    }
+  }
 }
 .bg {
-    min-height: 1rem;
-    &-theme {
-        &-primary {
-            background: $themePrimary; 
-        }
-        &-secondary {
-            background: $themeSecondary;
-        }
+  min-height: 1rem;
+  &-theme {
+    &-primary {
+      background: $themePrimary;
     }
+    &-secondary {
+      background: $themeSecondary;
+    }
+  }
 }
 .radius {
-    border-radius: $borderRadius;
-    &-left-right-top {
-        border-radius: $borderRadius $borderRadius 0 0;
-    }
-    &-left-right-bot {
-        border-radius: 0 0 $borderRadius $borderRadius;
-    }
-    &-left-even {
-        border-radius: $borderRadius 0 $borderRadius 0;
-    }
-    &-right-even {
-        border-radius: 0 $borderRadius 0 $borderRadius;
-    }
-    &-left-top-bottom {
-        border-radius: $borderRadius 0 0 $borderRadius;
-    }
-    &-right-top-bottom {
-        border-radius: 0 $borderRadius $borderRadius 0;
-    }
+  border-radius: $lgBorder;
+  &-left-right-top {
+    border-radius: $lgBorder $lgBorder 0 0;
+  }
+  &-left-right-bot {
+    border-radius: 0 0 $lgBorder $lgBorder;
+  }
+  &-left-even {
+    border-radius: $lgBorder 0 $lgBorder 0;
+  }
+  &-right-even {
+    border-radius: 0 $lgBorder 0 $lgBorder;
+  }
+  &-left-top-bottom {
+    border-radius: $lgBorder 0 0 $lgBorder;
+  }
+  &-right-top-bottom {
+    border-radius: 0 $lgBorder $lgBorder 0;
+  }
 }
 .text-primary {
-    color: $themePrimary!important;
+  color: $themePrimary !important;
 }
 .text-secondary {
-    color: $themeSecondary!important;
+  color: $themeSecondary !important;
 }
 .text-underline {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 .transform-right-10 {
-    @include min(mac) {
-        transform: translateX(10%);
-    }
+  @include min(mac) {
+    transform: translateX(10%);
+  }
+}
+.list-style-none {
+  list-style: none;
+}
+@include min(uhd) {
+  .py-6,
+  .py-md-6,
+  .py-lg-6,h
+  .py-xl-6,
+  .py-xxl-6,
+  .py-xxxl-6 {
+    padding-bottom: 5vh!important;
+    padding-top: 5vh!important;
+  }
 }

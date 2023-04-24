@@ -14,12 +14,12 @@ const {
 
 module.exports = [{
   entry: {
-    libs: ['./src/js/libs.js'],
-    app: ['./src/js/app.js']
+    libs: ['../webpack/src/js/libs.js'],
+    app: ['../webpack/src/js/app.js']
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, './assets/js')
+    path: path.resolve(__dirname, '../assets/js')
   },
   module: {
     rules: [
@@ -31,11 +31,11 @@ module.exports = [{
       },
       // sass compilation
       {
-        test: /\.(scss|sass)$/,
+        test: /\.(sass|scss)/i,
         use: [{
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: resolve(__dirname, "./assets/css"),
+              publicPath: resolve(__dirname, "../assets/css"),
             },
           },
           {
@@ -52,7 +52,7 @@ module.exports = [{
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         type: 'asset/resource',
         generator: {
-          filename: './assets/fonts/[name][ext]',
+          filename: '../assets/fonts/[name][ext]',
         }
       },
       // loader for images and icons (only required if css references image files)
@@ -60,7 +60,7 @@ module.exports = [{
         test: /\.(webp|svg|png)$/,
         type: 'asset/resource',
         generator: {
-          filename: './assets/img/[name][ext]',
+          filename: '../assets/img/[name][ext]',
         }
       },
     ]
@@ -69,14 +69,14 @@ module.exports = [{
     // clear out build directories on each build
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [
-        './assets/js/*',
-        './assets/css/*',
-        './assets/img/*',
+        '../assets/js/*',
+        '../assets/css/*',
+        '../assets/img/*',
       ]
     }),
     // css extraction into dedicated file
     new MiniCssExtractPlugin({
-      filename: './css/[name].css'
+      filename: '../css/[name].css'
     }),
   ],
   optimization: {

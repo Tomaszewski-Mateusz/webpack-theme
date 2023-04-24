@@ -1,0 +1,7 @@
+.card {
+  &,
+  & > div {
+    border: none;
+    background: unset;
+  }
+}

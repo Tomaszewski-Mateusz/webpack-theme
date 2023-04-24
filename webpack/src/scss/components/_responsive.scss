@@ -4,7 +4,10 @@ $uhdWidth: 3552px;
 $uhdSingleWidth: 3264px;
 
 main {
-    margin-top: $navHeight;
+    margin-top: 64px;;
+    @include min(desktop) {
+        margin-top: $navHeight;
+    }
     @include max(tablet) {
         min-height: 100vh;
         min-height: 100svh;

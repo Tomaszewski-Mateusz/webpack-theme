@@ -6,19 +6,59 @@
   overflow: hidden;
   &__wrapper {
     position: relative;
+    isolation: isolate;
+    .nfz-wrap {
+      position: absolute;
+      border: $borderWidth solid var(--white);
+      border-radius: $borderRadius;
+      background: var(--bs-light-rgb);
+      left: 1rem;
+      bottom: -4rem;
+      box-shadow: $shadow;
+      z-index: 1;
+      width: 40%;
+      @include min(tablet) {
+        width: auto;
+      }
+      @include min(desktop) {
+        
+        left: -8rem;
+        bottom: -5.75rem;
+        z-index: -2;
+        border-radius: $borderRadius;
+        border-radius: $smBorder;
+      }
+      @include min(qhd) {
+        left: -12rem;
+      }
+      .nfz {
+        border-radius: inherit;
+        padding: .5rem;
+        border-radius: 0;
+        @include min(tablet) {
+          padding: 2rem;
+        }
+        @include min(qhd) {
+          padding: 4rem;
+        }
+      }
+    }
+
     img {
       object-fit: contain;
       aspect-ratio: 3/2;
     }
+
     &::before {
       @include pseudo();
       inset: 20% -100% -8px 5%;
       background: $themeSecondary;
       border-radius: $lgBorder 0 0 $lgBorder;
-      border: $borderWidth solid white;
+      border: $borderWidth solid var(--white);
       box-shadow: $shadow;
       z-index: -1;
     }
+
     &::after {
       @include pseudo();
       left: 70%;
@@ -26,34 +66,411 @@
       transform: translateY(-50%);
       aspect-ratio: 3/2;
       width: 75%;
-      background: url(/assets/img/effect-writing.png);
+      background: url(/assets/img/effect-writing.webp);
       @include bg(no-repeat, contain);
       z-index: -1;
     }
-    & > span {
+
+    & > span:first-child {
       $boxWidth: 200px;
-      &::before,&::after {
+
+      &::before,
+      &::after {
         @include pseudo();
         aspect-ratio: 1/1;
-        border-radius: $smBorder;
-        border: $borderWidth solid white;
+
+        border: $borderWidth solid var(--white);
         z-index: -2;
       }
+
       &::before {
         left: 0;
         top: 10%;
-        width: $boxWidth;
+        width: calc($boxWidth * 0.75);
+        @include min(fhd) {
+          width: $boxWidth;
+        }
+        border-radius: $smBorder;
         background: $themePrimary;
         box-shadow: $shadow;
-
       }
+
       &::after {
-        right: 10%;
-        width: ($boxWidth * 1.85);
+        border-radius: $smBorder;
+        right: 22%;
         bottom: -10%;
+        width: $boxWidth * 1.15;
         background: $themeSecondary;
         box-shadow: $shadow;
+        @include min(fhd) {
+          right: 22.5%;
+          width: $boxWidth * 1.5;
+        }
+        @include min(qhd) {
+          width: ($boxWidth * 1.85);
+          right: 23%;
+          border-radius: $lgBorder;
+        }
+      }
+    }
+    .effect-kropki {
+      @include min(desktop) {
+        &::before,
+        &::after {
+          @include pseudo();
+          aspect-ratio: 1/1;
+          z-index: -2;
+        }
+      }
+      &::before {
+        left: -2.5rem;
+        top: 55%;
+        transform: translateY(-55%);
+        width: 100px;
+        height: 100px;
+        background: url(/assets/img/effect-hero-1.webp);
+        @include bg(no-repeat, contain);
+        @include min(fhd) {
+          top: 45%;
+          transform: translateY(-45%);
+        }
+        @include min(qhd) {
+          top: 40%;
+          transform: translateY(-40%);
+          width: 100px;
+          height: 150px;
+        }
+      }
+      &::after {
+        left: 80%;
+        bottom: -12.5%;
+        width: 100px;
+        height: 50px;
+        background: url(/assets/img/effect-hero-2.webp);
+        @include bg(no-repeat, contain);
+        @include min(fhd) {
+          bottom: -12%;
+          left: 77.5%;
+          height: 66px;
+        }
+        @include min(qhd) {
+          bottom: -10%;
+          height: 88px;
+        }
+      }
+    }
+  }
+}
 
+.img-wrapper {
+  position: relative;
+  isolation: isolate;
+
+  &-s-1 {
+    @extend .img-wrapper;
+
+    .c-radius-right: {
+      border-radius: 0 0 $lgBorder 0;
+    }
+    &::before {
+      @include pseudo();
+      inset: 15% 0 (-$borderWidth) 25%;
+      background: $themePrimaryLight;
+      border-radius: $lgBorder;
+      border: $borderWidth solid var(--white);
+      z-index: -1;
+      box-shadow: $shadow;
+    }
+  }
+
+  .effect-1 {
+    &::before {
+      @include pseudo();
+      left: 100%;
+      top: 10%;
+      aspect-ratio: 1/1;
+      width: 20%;
+      background: url(/assets/img/effect-stetoskop.webp);
+      @include bg(no-repeat, contain);
+      z-index: 1;
+    }
+
+    &::after {
+      @include pseudo();
+      left: 100%;
+      bottom: 2%;
+      aspect-ratio: 1/1;
+      width: 20%;
+      background: url(/assets/img/effect-cardio.webp);
+      @include bg(no-repeat, contain);
+      z-index: 1;
+    }
+  }
+  .effect-left-bottom {
+    &::before {
+      @include pseudo();
+      right: 72.5%;
+      bottom: -5%;
+      aspect-ratio: 1/1;
+      width: 10%;
+      background: url(/assets/img/effect-deklaracja-1.webp);
+      @include bg(no-repeat, contain);
+      z-index: 1;
+    }
+  }
+
+  &.erecepta {
+    &::before {
+      $telWidth: 276px;
+      width: $telWidth;
+
+      @include max(tablet) {
+        width: ($telWidth / 2);
+      }
+
+      @include min(desktop) {
+        width: $telWidth;
+      }
+
+      @include max(desktop) {
+        rotate: 90deg;
+        left: -25%;
+        transform: translate(10%, -50%);
+      }
+
+      @include pseudo();
+      left: (-$telWidth/2);
+      top: 25%;
+      transform: translateY(-50%);
+      aspect-ratio: 1/2;
+      background: url(/assets/img/effect-telephone.webp);
+      @include bg(no-repeat, contain);
+    }
+    &::after {
+      @include min(desktop) {
+        @include pseudo();
+      }
+      bottom: 0;
+      left: -12.5%;
+      aspect-ratio: 1/2;
+      width: 10%;
+      background: url(/assets/img/effect-erecepta-1.webp);
+      @include bg(no-repeat, contain);
+      @include min(fhd) {
+        bottom: 10%;
+      }
+    }
+  }
+}
+
+.c-border {
+  border: $borderWidth solid var(--white);
+}
+
+.c-shadow {
+  box-shadow: $shadow;
+}
+
+.contact-box {
+  background: url(/assets/img/effect-kontakt.webp);
+  @include bg(no-repeat, contain);
+  .row {
+    border-radius: $smBorder;
+    background: $themePrimary;
+    background: linear-gradient(180deg, $themePrimary 0%, $themePrimary 80%, var(--white) 100%);
+    @extend .c-border;
+    @extend .c-shadow;
+
+    .acf-block {
+      border-radius: $smBorder 0 0 0;
+      padding-left: 6rem;
+
+      @include min(fhd) {
+        padding-left: 9.5rem;
+        padding-right: 1rem;
+      }
+
+      margin-top: 2rem;
+      position: relative;
+
+      &::before {
+        @include pseudo();
+        aspect-ratio: 1/1;
+        width: 2.5rem;
+        left: 2rem;
+        background: url(/assets/img/icons/icon-kontakt.svg);
+        @include bg(no-repeat, contain);
+      }
+
+      &::after {
+        @include pseudo();
+        left: 3rem;
+        top: 4rem;
+
+        @include min(fhd) {
+          left: 6rem;
+          top: 0;
+        }
+
+        bottom: 0;
+        width: 4px;
+        background-color: var(--white);
+      }
+
+      * {
+        color: var(--white);
+      }
+
+      p,
+      li {
+        font-weight: 300;
+      }
+
+      strong {
+        font-weight: 500;
+      }
+    }
+
+    .img-wrapper {
+      img {
+        border-radius: 0 $smBorder 0 0;
+        width: 100%;
+        @include max(fhd) {
+          aspect-ratio: 1/1;
+        }
+        @include max(qhd) {
+          aspect-ratio: 6/5;
+        }
+      }
+    }
+
+    .col-12:has(iframe) {
+      height: 400px;
+    }
+
+    iframe {
+      width: 100%;
+      height: inherit;
+      border-radius: 0 0 $smBorder $smBorder;
+    }
+  }
+}
+
+.services {
+  $pad: 2rem;
+
+  .card {
+    @extend .acf-block;
+
+    & > div {
+      padding: 0;
+    }
+  }
+
+  .card:not(.card-reset) {
+    border-radius: $smBorder;
+    background: white;
+    box-shadow: $shadow;
+
+    & > div {
+      padding-inline: $pad;
+    }
+
+    .card-header {
+      padding-top: $pad;
+
+      img {
+        aspect-ratio: 1/1;
+        width: 92px;
+      }
+    }
+
+    .card-body {
+      padding-block: ($pad / 2);
+    }
+
+    .card-footer {
+      padding-bottom: $pad;
+
+      a {
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+}
+.banner {
+  :has(.img-wrapper) {
+    height: 100%;
+  }
+  .img-wrapper {
+    @include min(desktop) {
+      border-radius: 0 $lgBorder $lgBorder 0;
+    }
+    position: relative;
+    height: 100%;
+    img {
+      border-radius: inherit;
+      border: $borderWidth solid var(--white);
+      box-shadow: $shadow;
+      height: 100%;
+      aspect-ratio: 1/1;
+      @media (min-width: 1920px) {
+        aspect-ratio: 12/9;
+      }
+      @media (min-width: 2560px) {
+        aspect-ratio: 9/7;
+      }
+      object-fit: cover;
+      object-position: center left;
+    }
+    &::before {
+      @include pseudo();
+      inset: 4rem -100vw 4rem -4rem;
+      background-color: $themePrimary;
+      border: $borderWidth solid var(--white);
+      box-shadow: $shadow;
+      z-index: -1;
+    }
+    &::after {
+      @media (min-width: 1440px) {
+        @include pseudo();
+        left: 100%;
+        bottom: -2.5rem;
+        width: 100%;
+        height: 400px;
+        @include min(qhd) {
+          height: 470px;
+        }
+        background: url(/assets/img/front/effect-banner-writing.webp);
+        @include bg();
+        z-index: 1;
+      }
+      @include min(qhd) {
+        bottom: -0.75rem;
+      }
+      @include min(uhd) {
+        bottom: -2rem;
+      }
+    }
+  }
+  .acf-block {
+    position: relative;
+    z-index: 2;
+    isolation: isolate;
+    padding: 2rem;
+    @include min(desktop) {
+      padding-left: 4rem;
+    }
+    &::before {
+      @include max(desktop) {
+        @include pseudo();
+        inset: 0;
+        background-color: $themePrimary;
+        border: $borderWidth solid var(--white);
+        border-top: 0;
+        box-shadow: $shadow;
+        z-index: -1;
       }
     }
   }

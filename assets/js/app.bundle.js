@@ -1,1 +1,0 @@
-(()=>{"use strict";window.onscroll=function(){window.pageYOffset>=o?s.classList.add("sticky-shadow"):s.classList.remove("sticky-shadow")};var s=document.querySelector("#frontNav"),o=s.offsetTop})();

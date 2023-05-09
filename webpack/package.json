@@ -10,9 +10,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tcallsen/wp-barebone-theme-webpack5-sass.git"
+    "url": "https://github.com/Tomaszewski-Mateusz/webpack-theme.git"
   },
-  "author": "Taylor Callsen <taylor.callsen@gmail.com> (https://taylor.callsen.me/)",
+  "author": "Mateusz Tomaszewski <tom@szewski.me> (https://toma.szewski.me/)",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.18.6",

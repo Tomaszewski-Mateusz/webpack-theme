@@ -2,4 +2,7 @@ webpack/node_modules
 src/vendor
 /vendor/
 webpack/src/vendor
+/assets/css
+/assets/js
+/assets/img
 

@@ -5,25 +5,31 @@
 add_theme_support('post-thumbnails');
 
 // acf-disable-trash
-
-add_filter('wpcf7_load_js', '__return_false');
-add_filter('wpcf7_load_css', '__return_false');
-
 add_filter('wpcf7_autop_or_not', '__return_false');
 
-// init acf blocks
+add_filter('wpcf7_form_elements', function ($content) {
+    $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
 
-add_action('init', 'register_acf_blocks');
-function register_acf_blocks()
+    return $content;
+});
+
+// thumbTrigger
+
+function fetchThumb($size, $class = '', $link)
 {
-    register_block_type(__DIR__ . '/template-parts/blocks/thumb');
-    register_block_type(__DIR__ . '/template-parts/blocks/skup');
-    register_block_type(__DIR__ . '/template-parts/blocks/hodowla');
-    register_block_type(__DIR__ . '/template-parts/blocks/hero');
-    register_block_type(__DIR__ . '/template-parts/blocks/gallery');
-    register_block_type(__DIR__ . '/template-parts/blocks/wheel');
-    register_block_type(__DIR__ . '/template-parts/blocks/banner');
-    register_block_type(__DIR__ . '/template-parts/blocks/map');
+        if($link !== null) {
+            $link = get_template_directory_uri() . $link;
+        } else {
+            $link = 'https://via.placeholder.com/768'
+        }
+    $dir = get_template_directory_uri();
+    if ($class && has_post_thumbnail()) {
+        the_post_thumbnail($size, array('class' => "$class"));
+    } elseif (has_post_thumbnail()) {
+        the_post_thumbnail($size);
+    } else {
+        echo "<img class='$class' src='$link' alt='placeholder'>";
+    }
 }
 
 // init ACF options
@@ -66,7 +72,8 @@ function triggerFieldUrl($arg, $url = '')
 
 // init breadcrumbs
 
-function breadcrumbs() {
+function breadcrumbs()
+{
     if (function_exists('yoast_breadcrumb')) {
         yoast_breadcrumb('<div class="acf-block"><p class="head-3 link-theme--forced" id="breadcrumbs"', '</p></div>');
     }
@@ -144,3 +151,13 @@ function fix_svg()
           </style>';
 }
 add_action('admin_head', 'fix_svg');
+
+function tag_manager()
+{
+    if (has_term('nowosc', 'tagi')) {
+        return "card--new-product";
+    }
+    if (has_term('archiwum', 'tagi')) {
+        return "card--archive-product";
+    }
+}

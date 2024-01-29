@@ -7,8 +7,8 @@ add_action('after_setup_theme', 'register_navwalker');
 
 register_nav_menus(
     array(
-        'primary_menu' => __('Primary Menu', 'samatix'),
-        'secondary_menu' => __('Secondary Menu', 'samatix'),
+        'primary_menu' => __('Primary Menu', 'webpack-theme'),
+        'secondary_menu' => __('Secondary Menu', 'webpack-theme'),
     )
 );
 
